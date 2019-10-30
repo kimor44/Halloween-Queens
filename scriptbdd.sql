@@ -22,11 +22,9 @@ CREATE TABLE `attackmonster` (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     monster_id INT NOT NULL,
     attack_id INT NOT NULL,
-    KEY `fk_attackmonster_monster` (`monster_id`),
-    CONSTRAINT `fk_attackmonster_monster` FOREIGN KEY (monster_id)
+    FOREIGN KEY (monster_id)
         REFERENCES monster(id),
-    KEY fk_attackmonster_attack (attack_id),
-    CONSTRAINT fk_attackmonster_attack FOREIGN KEY (attack_id)
+    FOREIGN KEY (attack_id)
         REFERENCES attack(id),
     limitstroke INT NOT NULL
 );
