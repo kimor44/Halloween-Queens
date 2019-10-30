@@ -95,12 +95,19 @@ class QueensAward extends React.Component{
     console.log(damage)
     if (this.state.life>0 && this.state.fighterLife>0){
     this.setState({fighterLife:this.state.fighterLife - damage})
+      if(this.state.fighterLife<=0){
+        this.setState({fighterDisplay:!this.state.fighterDisplay})
+      }
     console.log(this.state.life)}
     else{
       console.log('dead')
       this.setState({fighterDisplay:!this.state.fighterDisplay})
 
     }
+  }
+
+  php=()=>{
+    this.play('./assets/sounds/phpRespect.mp3')
   }
 
   kick=()=>{
@@ -196,6 +203,7 @@ class QueensAward extends React.Component{
           <button onClick={this.kick}>kick {this.state.fighterattack}</button>
           <button onClick={this.blowSack}>Coup de sac</button>
           <button onClick={this.cry}>cri</button>
+          <button onClick={this.php}>php</button>
         </div>}
 
         {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
