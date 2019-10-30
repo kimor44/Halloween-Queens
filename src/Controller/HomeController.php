@@ -40,8 +40,10 @@ class HomeController extends AbstractController
     {
         $monsterAll = new HomeManager();
         $monsters = $monsterAll->selectAll();
-        foreach ($monsters as $monster) {
-            $monster['attacks'] = $monsterAll->selectAttackByMonster($monster['id']);
+        foreach ($monsters as $position => $monster) {
+            $monsters[$position]['attacks'] = $monsterAll->selectAttackByMonster($monster['id']);
         }
+        header("Content-Type: application/json");
+        return json_encode($monsters);
     }
 }
