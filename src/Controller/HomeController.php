@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\HomeManager;
 use App\Model\MonsterManager;
 use App\Service\MonsterTransformer;
 use Symfony\Component\HttpClient\HttpClient;
@@ -33,5 +34,14 @@ class HomeController extends AbstractController
         $monsterApi = new MonsterManager();
         $monsters = $monsterApi->getMonsters();
         return $monsters;
+    }
+
+    public function monsterAll()
+    {
+        $monsterAll = new HomeManager();
+        $monsters = $monsterAll->selectAll();
+        foreach ($monsters as $monster) {
+            $monster['attacks'] = $monsterAll->selectAttackByMonster($monster['id']);
+        }
     }
 }
