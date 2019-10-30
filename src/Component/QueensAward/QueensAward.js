@@ -9,7 +9,7 @@ class QueensAward extends React.Component{
   constructor(){
     super()
     this.state={
-      display:'block',
+      display:true,
       life:15,
       attack:15,
       name:'Robert',
@@ -22,7 +22,7 @@ class QueensAward extends React.Component{
               {nom:'haleine fétide',
               value:0}],
     
-      fighterDisplay:'block',
+      fighterDisplay:true,
       fighterLife:15,
       fighterAttack:15,
       fighterName:'Guy',
@@ -91,34 +91,43 @@ class QueensAward extends React.Component{
 
   cry=()=>{
     this.play('./assets/sounds/cri.wav')
-    if (this.state.life>0){
-    
-    this.setState({fighterLife:this.state.fighterLife - this.getRandomInt(this.state.attack)})
+    let damage = this.getRandomInt(this.state.attack)
+    console.log(damage)
+    if (this.state.life>0 && this.state.fighterLife>0){
+    this.setState({fighterLife:this.state.fighterLife - damage})
     console.log(this.state.life)}
     else{
       console.log('dead')
+      this.setState({fighterDisplay:!this.state.fighterDisplay})
+
     }
   }
 
   kick=()=>{
     this.play('./assets/sounds/coupMachoire.wav')
-    if (this.state.life>0){
-    this.setState({fighterLife:this.state.fighterLife - 1})
+    let damage = this.getRandomInt(this.state.attack)
+
+    if (this.state.life>0 && this.state.fighterLife>0){
+    this.setState({fighterLife:this.state.fighterLife - damage})
     this.setState({attack:this.state.attack -1})
     console.log(this.state.life)}
     else{
       console.log('dead')
+      this.setState({fighterDisplay:!this.state.fighterDisplay})
+
       }
     }
 
   blowSack=()=>{
     this.play('./assets/sounds/bagarre.mp3')
+    let damage = this.getRandomInt(this.state.attack)
+
     if (this.state.life>0 && this.state.fighterLife>0){
-      this.setState({fighterLife:this.state.fighterLife - 1})
+      this.setState({fighterLife:this.state.fighterLife - damage})
       console.log(this.state.life)}
     else{
       console.log('dead')
-      this.setState({fighterDisplay:'none'})
+      this.setState({fighterDisplay:!this.state.fighterDisplay})
     }
   }
     
@@ -132,70 +141,82 @@ class QueensAward extends React.Component{
 
   fighterKick=()=>{
     this.getRandomInt(this.state.life)
+    let damage = this.getRandomInt(this.state.attack)
+
     console.log(this.getRandomInt(this.state.life))
     this.play('./assets/sounds/coupMachoire.wav')
     if (this.state.life>0){
-    this.setState({life:this.state.life - 1})
+    this.setState({life:this.state.life - damage})
     this.setState({attack:this.state.attack -1})
     console.log(this.state.life)}
     else{
       console.log('dead')
+      this.setState({display:!this.state.display})
       }
     }
 
   fighterBlowSack=()=>{
     this.play('./assets/sounds/bagarre.mp3')
+    let damage = this.getRandomInt(this.state.attack)
+
     if (this.state.life>0){
-    this.setState({life:this.state.life - 1})
+    this.setState({life:this.state.life - damage})
     console.log(this.state.life)}
     else{
       console.log('dead')
+      this.setState({display:!this.state.display})
 
     }
   }
 
   fighterCry=()=>{
     this.play('./assets/sounds/cri.wav')
+    let damage = this.getRandomInt(this.state.attack)
+
     if (this.state.life>0){
-    this.setState({life:this.state.life - 1})
+    this.setState({life:this.state.life - damage})
     console.log(this.state.life)}
     else{
-      this.setState({display:'none'})
+      this.setState({display:!this.state.display})
       console.log('dead2')
     }
   }
 
   render(){
     return(
-      <Fragment>
-        {/* QueensAward */}
-        {/* <Link to ='/firstFight'>First Fight</Link> */}
-        <div className='queenPretender'>
-        <p>{this.state.name}</p>
-        <div className='lifeConteneur'><div className="restLife" style={{width:this.state.life*(100/15)+'%'}}>
-        </div></div><p>{this.state.life} points de vie</p>
-        <img src={this.state.picture} alt={this.state.pictureDescription}/>
-        <button onClick={this.kick}>kick {this.state.fighterattack}</button>
-        <button onClick={this.blowSack}>Coup de sac</button>
-        <button onClick={this.cry}>cri</button>
-        </div>
+      <div>
+        {this.state.display &&
+        <div className='queenPretender' >
+          <h2>{this.state.name}</h2>
+          <div className='lifeConteneur'><div className="restLife" style={{width:this.state.life*(100/15)+'%'}}>
+          </div>
+          </div>
+          <p>{this.state.life} points de vie</p>
+          <img className="imageFighter" src={this.state.picture} alt={this.state.pictureDescription}/>
+          <button onClick={this.kick}>kick {this.state.fighterattack}</button>
+          <button onClick={this.blowSack}>Coup de sac</button>
+          <button onClick={this.cry}>cri</button>
+        </div>}
 
-        {/* <FightMethod fighterlife ={this.state.fighterlife} /> */}
+        {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
 
-      {/* fighter */}
-        <div className="fighter" style={{display:this.state.fighterDisplay}}>
-        <h2>Fighter</h2>
+        {this.state.fighterDisplay && 
+        <div className="fighter" style={this.state.fighterDisplay?{display:'block'}:{display:'none'}}>
+          <h2>{this.state.fighterName}</h2>
         <div className="lifeConteneurFighter"><div className="restLifeFighter" style={{width:this.state.fighterLife*(100/15)+'%'}}></div></div>
-        <p>{this.state.fighterlife}</p>
-        <p>{this.state.fightername}</p>
+          <p>{this.state.fighterLife} points de vie</p>
+          <p>{this.state.fightername}</p>
         <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
-        <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
-        <button onClick={this.fighterBlowSack}>Blow Sack</button>
-        <button onClick={this.fighterCry}>Cry</button>
+          <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
+          <button onClick={this.fighterBlowSack}>Blow Sack</button>
+          <button onClick={this.fighterCry}>Cry</button>
+        </div>}
+        {!this.state.fighterDisplay && <button>You win ! New game ?</button>}
+
+
+      
 
       </div>
-
-      </Fragment>
       
       
     )
