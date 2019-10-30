@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Les reines d'haloween
+        Les reines d'halloween
         <Router/>
       </header>
     </div>

@@ -35,6 +35,8 @@ class QueensAward extends React.Component{
     }
   }
   
+
+  //initialisation de notre pretendant au titre
   componentDidMount=()=>{
     
     console.log(this.state.attaque[0].nom)
@@ -57,6 +59,8 @@ class QueensAward extends React.Component{
     })
   }
 
+
+  //initialisation de notre adversaire
   HandleClick=()=>{
     console.log('handleClick')
 
@@ -79,8 +83,7 @@ class QueensAward extends React.Component{
   }
 
 
-
-
+  //fonctions d'attaques de notre pretendant
   play=(song)=>{
     let audio = new Audio(song);
       audio.play()
@@ -93,6 +96,28 @@ class QueensAward extends React.Component{
     console.log(this.state.life)}
     else{
       console.log('dead')
+    }
+  }
+
+  kick=()=>{
+    this.play('./assets/sounds/coupMachoire.wav')
+    if (this.state.life>0){
+    this.setState({life:this.state.life - 1})
+    this.setState({attack:this.state.attack -1})
+    console.log(this.state.life)}
+    else{
+      console.log('dead')
+      }
+    }
+
+  blowSack=()=>{
+    this.play('./assets/sounds/bagarre.mp3')
+    if (this.state.life>0){
+    this.setState({life:this.state.life - 1})
+    console.log(this.state.life)}
+    else{
+      console.log('dead')
+
     }
   }
     
