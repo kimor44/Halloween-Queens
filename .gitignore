@@ -4,3 +4,5 @@
 *.cache
 db.php
 .idea
+node_modules
+package-lock.json
