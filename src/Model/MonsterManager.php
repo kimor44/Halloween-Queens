@@ -4,9 +4,17 @@ namespace App\Model;
 
 use Symfony\Component\HttpClient\HttpClient;
 
-class MonsterManager
+class MonsterManager extends AbstractManager
 {
-    const URLAPI = "https://hackathon-wild-hackoween.herokuapp.com/";
+
+    const TABLE = 'monster';
+
+    const URLAPI = "https://hackathon-wild-hackoween.herokuapp.com";
+
+    public function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
 
     public function getMonsters()
     {

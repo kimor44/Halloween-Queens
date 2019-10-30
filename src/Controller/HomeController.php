@@ -8,6 +8,10 @@
 
 namespace App\Controller;
 
+use App\Model\MonsterManager;
+use App\Service\MonsterTransformer;
+use Symfony\Component\HttpClient\HttpClient;
+
 class HomeController extends AbstractController
 {
 
@@ -26,5 +30,8 @@ class HomeController extends AbstractController
 
     public function monstersAPI()
     {
+        $monsterApi = new MonsterManager();
+        $monsters = $monsterApi->getMonsters();
+        return $monsters;
     }
 }
