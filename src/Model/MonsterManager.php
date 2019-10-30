@@ -19,7 +19,7 @@ class MonsterManager extends AbstractManager
     public function getMonsters()
     {
         $client = HttpClient::create();
-        $response = $client->request("GET", self::URLAPI."/monsters");
+        $response = $client->request("GET", self::URLAPI . "/monsters");
         return $response->toArray();
     }
 }
