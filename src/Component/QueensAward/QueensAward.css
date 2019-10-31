@@ -2,14 +2,13 @@
     width: 300px;
     height: 25px;
     background-color:blue;
-    
 }
 
-.lifeConteneurFighter{
+/* .test{
     width: 300px;
     height: 25px;
     background-color:blue;
-}
+} */
 .restLife{
     width: 30%;
     height: 100%;
@@ -60,6 +59,7 @@
 }
 h2{
   color: black;
+  font-size: 1em;
 }
 
 .imageFighter{
@@ -78,5 +78,19 @@ button{
     top: -15px;
     font-size: 50%;
     margin-right: 5px;
+    font-size: 0.35em;
 
+}
+
+.containerCarte {
+  display: flex;
+  flex-direction: row;
+  vertical-align: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1270px) {
+  .containerCarte {
+    flex-direction: column;
+  }
 }
