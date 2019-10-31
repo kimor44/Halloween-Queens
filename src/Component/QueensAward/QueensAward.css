@@ -80,3 +80,20 @@ button{
     margin-right: 5px;
 
 }
+
+.containerCarte {
+    
+    display: flex;
+    flex-direction: row;
+   vertical-align: center;
+   width: 60%;
+   justify-content: space-between;
+}
+
+@media screen and (max-width: 1270px) {
+    .containerCarte {
+        flex-direction: column;
+    }
+}
+
+
