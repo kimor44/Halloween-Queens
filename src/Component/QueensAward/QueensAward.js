@@ -86,6 +86,14 @@ class QueensAward extends React.Component{
     })
   }
 
+
+  sleep=(delay)=> {
+    let start = new Date().getTime();
+    while (new Date().getTime () < start + delay);
+   }
+   
+   
+
   //initialisation de notre adversaire
   HandleClick=()=>{
     let character = this.getRandomInt(19)
@@ -137,9 +145,11 @@ class QueensAward extends React.Component{
     }
 
   strokeOne=()=>{
-    this.fighterStrokeOne()
+    
+    
     this.play(`./assets/sounds/${this.state.attaqueStrokeOneSound}`)
     let damage = this.getRandomInt(40)
+    this.fighterStrokeOne()
     console.log(damage)
     if (this.state.life>0 && this.state.fighterLife>0){
     this.setState({fighterLife:this.state.fighterLife - damage})
@@ -155,9 +165,11 @@ class QueensAward extends React.Component{
   }
  
   strokeTwo=()=>{
-    this.fighterStrokeTwo()
+    
+    
     this.play(`./assets/sounds/${this.state.attaqueStrokeTwoSound}`)
     let damage = this.getRandomInt(40)
+    this.fighterStrokeTwo()
     if (this.state.life>0 && this.state.fighterLife>0){
     this.setState({fighterLife:this.state.fighterLife - damage})
     this.setState({attack:this.state.attack -1})
@@ -169,10 +181,10 @@ class QueensAward extends React.Component{
     }
 
   strokeThree=()=>{
-    this.fighterStrokeThree()
+    
     this.play(`./assets/sounds/${this.state.attaqueStrokeThreeSound}`)
     let damage = this.getRandomInt(40)
-
+    this.fighterStrokeThree()
     if (this.state.life>0 && this.state.fighterLife>0){
       this.setState({fighterLife:this.state.fighterLife - damage})
       console.log(this.state.life)}
@@ -193,6 +205,7 @@ class QueensAward extends React.Component{
     }
 
   fighterStrokeOne=()=>{
+    
     let damage = this.getRandomInt(10)
     console.log(this.getRandomInt(this.state.life))
     this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}`)
@@ -207,6 +220,7 @@ class QueensAward extends React.Component{
     }
 
   fighterStrokeTwo=()=>{
+    
     let damage = this.getRandomInt(10)
     console.log(this.getRandomInt(this.state.life))
     this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeTwoSound}`)
@@ -222,6 +236,7 @@ class QueensAward extends React.Component{
   }
 
   fighterStrokeThree=()=>{
+    
     let damage = this.getRandomInt(10)
     console.log(this.getRandomInt(this.state.life))
     this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeThreeSound}`)
@@ -282,11 +297,8 @@ class QueensAward extends React.Component{
         {!this.state.fighterDisplay && <button onClick={()=>{this.newGameBitch(); this.victoryPoint()}} >You win ! New game ?</button>}
 
         {this.state.winner && <div className='winnerDiv'><h2>WINNER !!!!!!!!!!!!!!!!! bitch</h2><button onClick={this.handClickClose}>Again</button></div>}
-        
 
       </div>
-      
-      
     )
 }
 }
