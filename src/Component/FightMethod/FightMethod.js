@@ -49,7 +49,7 @@ class FightMethod extends React.Component{
   }
 
   cry=()=>{
-    this.play('./assets/sounds/cri.wav')
+    this.play('./assets/sounds/cry.mp3')
     if (this.state.life>0){
     this.setState({life:this.state.life - 1})
     console.log(this.state.life)}
