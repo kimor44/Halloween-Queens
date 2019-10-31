@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Creepster&display=swap');
+
+h1 {
+  font-family: 'Creepster', cursive;
+}
+
 .App {
   text-align: center;
 }
@@ -8,6 +14,8 @@
 
 .App-header {
   background-image: url('https://ressources.blogdumoderateur.com/2014/10/halloween-1-600x338.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +32,6 @@
 .App-header h1 {
   color: orangered;
 }
-
-.App-header h2 {
+.appHeaderH2 {
   color: orange;
 }

@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
        <h1>Halloween's Queen</h1>  
-       <h2>Who will be the most beautiful?</h2>
+       <h2 className='appHeaderH2'>Who will be the most beautiful?</h2>
         <Router/>
       </header>
     </div>
