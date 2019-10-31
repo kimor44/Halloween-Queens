@@ -25,12 +25,12 @@ class AdminManager extends AbstractManager
 
     public function insertMonster(array $monster)
     {
-        $query= "INSERT INTO $this->table  (`name`, `level`, `picture`, `picture_legend`, `description`)
+        $query= "INSERT INTO monster  (`name`, `level`, `picture`, `picture_legend`, `description`)
         VALUES (:name, :level, :picture, :picture_legend, :description)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('name', $monster['name'], \PDO::PARAM_STR);
         $statement->bindValue('picture', $monster['picture'], \PDO::PARAM_STR);
-        $statement->bindValue('level', $monster['level'], \PDO::PARAM_INT);
+        $statement->bindValue('level', $monster['level'], \PDO::PARAM_STR);
         $statement->bindValue('picture_legend', $monster['picture_legend'], \PDO::PARAM_STR);
         $statement->bindValue('description', $monster['description'], \PDO::PARAM_STR);
         if ($statement->execute()) {
