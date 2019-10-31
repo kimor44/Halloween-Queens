@@ -261,7 +261,7 @@ class QueensAward extends React.Component{
               <button onClick={this.strokeTwo}>{this.state.attaqueNameTwo}</button>
               <button onClick={this.strokeThree}>{this.state.attaqueNameThree}</button>
 
-              <h2>{this.state.name}</h2>
+              <h2 className='titleMonster'>{this.state.name}</h2>
               <p className='descriptioncss'>{this.state.describ}</p>
                 <div className='lifeConteneur'>
                   <div className="restLife" style={{width:this.state.life+'%'}}>
@@ -283,7 +283,7 @@ class QueensAward extends React.Component{
             <button onClick={this.fighterStrokeOne}>{this.state.fighterAttaqueNameOne}</button>
             <button onClick={this.fighterStrokeTwo}>{this.state.fighterAttaqueNameTwo}</button>
             <button onClick={this.fighterStrokeThree}>{this.state.fighterAttaqueNameThree}</button>
-            <h2>{this.state.fighterName}</h2>
+            <h2 className='titleMonster'>{this.state.fighterName}</h2>
             <p className="descriptioncss">{this.state.fighterDescrib}</p>
             <div className='lifeConteneur'>
               <div className="restLifeFighter" style={{width:this.state.fighterLife+'%'}}>
