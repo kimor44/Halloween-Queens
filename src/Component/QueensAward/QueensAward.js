@@ -79,6 +79,9 @@ class QueensAward extends React.Component{
     })
   }
 
+
+
+
   //fonctions d'attaques de notre pretendant
   play=(song)=>{
     let audio = new Audio(song);
@@ -194,30 +197,40 @@ class QueensAward extends React.Component{
       <div>
         {this.state.display &&
         <div className='queenPretender' >
-          <h2>{this.state.name}</h2>
-          <div className='lifeConteneur'><div className="restLife" style={{width:this.state.life*(100/15)+'%'}}>
-          </div>
-          </div>
-          <p>{this.state.life} points de vie</p>
           <img className="imageFighter" src={this.state.picture} alt={this.state.pictureDescription}/>
-          <button onClick={this.kick}>kick {this.state.fighterattack}</button>
-          <button onClick={this.blowSack}>Coup de sac</button>
-          <button onClick={this.cry}>cri</button>
-          <button onClick={this.php}>php</button>
-        </div>}
+            <div className='lowDiv'>
+              <button onClick={this.kick}>kick {this.state.fighterattack}</button>
+              <button onClick={this.blowSack}>Coup de sac</button>
+              <button onClick={this.cry}>cri</button>
+
+              <h2>{this.state.name}</h2>
+                <div className='lifeConteneur'>
+                  <div className="restLife" style={{width:this.state.life*(100/15)+'%'}}>
+                  </div>
+                </div>
+              <p>{this.state.life} points de vie</p>
+            </div>
+          </div>}
+        <button onClick={this.php}>php</button>
 
         {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
 
         {this.state.fighterDisplay && 
         <div className="fighter" style={this.state.fighterDisplay?{display:'block'}:{display:'none'}}>
-          <h2>{this.state.fighterName}</h2>
-        <div className="lifeConteneurFighter"><div className="restLifeFighter" style={{width:this.state.fighterLife*(100/15)+'%'}}></div></div>
-          <p>{this.state.fighterLife} points de vie</p>
-          <p>{this.state.fightername}</p>
-        <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
-          <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
-          <button onClick={this.fighterBlowSack}>Blow Sack</button>
-          <button onClick={this.fighterCry}>Cry</button>
+          <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
+          <div className='lowDivFighter'>
+            <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
+            <button onClick={this.fighterBlowSack}>Blow Sack</button>
+            <button onClick={this.fighterCry}>Cry</button>
+            <h2>{this.state.fighterName}</h2>
+            <div className="lifeConteneurFighter">
+              <div className="restLifeFighter" style={{width:this.state.fighterLife*(100/15)+'%'}}>
+              </div>
+            </div>
+              <p>{this.state.fighterLife} points de vie</p>
+              <p>{this.state.fightername}</p>
+                
+          </div>
         </div>}
         {!this.state.fighterDisplay && <button>You win ! New game ?</button>}
 

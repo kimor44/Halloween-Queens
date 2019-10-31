@@ -1,12 +1,12 @@
 .lifeConteneur{
-    width: 400px;
+    width: 300px;
     height: 25px;
     background-color:blue;
     
 }
 
 .lifeConteneurFighter{
-    width: 400px;
+    width: 300px;
     height: 25px;
     background-color:blue;
 }
@@ -24,13 +24,42 @@
     display: none;
 }
 .queenPretender{
-    background-color: grey;
+  background : linear-gradient(#764B0D, #C1B484);
+  /* background-color:#775A03; */
+  border: solid 12px #E8C849;
+  border-radius: 30px;
+  width: 300px;
+  height: 400px;
+}
+.lowDivFighter{
+    background-color: #88B4B9;
+    border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+    height: 250px;
+    position: absolute;
+    width: 300px;
+}
+.lowDiv{
+  background : linear-gradient(#B59772, #C2B484 );
+
+  /* background-color: #88B4B9; */
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  height: 250px;
+  position: absolute;
+  width: 300px;
+
+}
+.fighter{
+    background-color:#234C52;
+    border: solid 12px#4C9CAF;
+    width: 300px;
+    height: 400px;
+    background-color:;
     border-radius: 30px;
 }
-
-.fighter{
-    background-color: grey;
-    border-radius: 30px;
+h2{
+  color: black;
 }
 
 .imageFighter{
@@ -40,10 +69,14 @@
     margin: auto;
 }
 button{
-    border-radius: 30px;
+    border-radius: 8px;
     background-color: black;
     color:white;
-    width: 110px;
-    height: 65px;
+    width: 90px;
+    height: 45px;
+    position: relative;
+    top: -15px;
+    font-size: 50%;
+    margin-right: 5px;
 
 }
