@@ -220,7 +220,7 @@ class QueensAward extends React.Component{
           <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
           <div className='lowDivFighter'>
             <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
-            <button onClick={this.fighterBlowSack}>Blow Sack</button>
+            <button onClick={this.fighterBlowSack}>this.fighter</button>
             <button onClick={this.fighterCry}>Cry</button>
             <h2>{this.state.fighterName}</h2>
             <div className="lifeConteneurFighter">
