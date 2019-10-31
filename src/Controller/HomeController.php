@@ -32,8 +32,7 @@ class HomeController extends AbstractController
     public function monstersAPI()
     {
         $monsterApi = new MonsterManager();
-        $monsters = $monsterApi->getMonsters();
-        return $monsters;
+        $monsterApi->getMonsters();
     }
 
     public function monsterAll()
@@ -43,7 +42,8 @@ class HomeController extends AbstractController
         foreach ($monsters as $position => $monster) {
             $monsters[$position]['attacks'] = $monsterAll->selectAttackByMonster($monster['id']);
         }
-        header("Content-Type: application/json");
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=utf-8");
         return json_encode($monsters);
     }
 }
