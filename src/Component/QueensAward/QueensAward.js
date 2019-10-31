@@ -52,6 +52,7 @@ class QueensAward extends React.Component{
           picture:response.data[0].picture,
           pictureDescription:response.data[0].picture_legend,
           // attacks:response.data[0].attacks[0].name,
+          attaque:response.data[0].attacks[0].name,
           attaque:response.data[0].attacks[0].limitstroke,
           attaque:response.data[0].attacks[1].name,
           attaque:response.data[0].attacks[1].limitstroke,
@@ -66,20 +67,21 @@ class QueensAward extends React.Component{
 
   //initialisation de notre adversaire
   HandleClick=()=>{
+    let character = this.getRandomInt(2)
     axios.get('http://192.168.184.61:8000/Home/monsterAll')
     .then((response)=>{
         this.setState({
-          fighterLife:response.data.life,
+          fighterLife:100,
           fighterAttack:response.data.attack,
-          fighterName:response.data.name,
-          fighterPictureDescription:response.data.pictureDescription,
-          fighterPicture:response.data.picture,
-          fighterAttaque:response.data.attaque[0].nom,
-          fighterAttaque:response.data.attaque[0].value,
-          fighterAttaque:response.data.attaque[1].nom,
-          fighterAttaque:response.data.attaque[1].value,
-          fighterAttaque:response.data.attaque[2].nom,
-          fighterAttaque:response.data.attaque[2].value
+          fighterName:response.data[character].name,
+          fighterPictureDescription:response.data[character].picture_legend,
+          fighterPicture:response.data[character].picture,
+          // fighterAttaque:response.data[character].attacks[0].name,
+          // fighterAttaque:response.data[character].attacks[0].limitstroke,
+          // fighterAttaque:response.data[character].attacks[1].name,
+          // fighterAttaque:response.data[character].attacks[1].limitstroke,
+          // fighterAttaque:response.data[character].attacks[2].name,
+          // fighterAttaque:response.data[character].attacks[2].limitstroke
     })
     })
   }
@@ -210,13 +212,13 @@ class QueensAward extends React.Component{
 
               <h2>{this.state.name}</h2>
                 <div className='lifeConteneur'>
-                  <div className="restLife" style={{width:this.state.life*(100/15)+'%'}}>
+                  <div className="restLife" style={{width:this.state.life+'%'}}>
                   </div>
                 </div>
               <p>{this.state.life} points de vie</p>
             </div>
           </div>}
-        <button onClick={this.php}>php</button>
+        {/* <button onClick={this.php}>php</button> */}
 
         {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
 
@@ -229,7 +231,7 @@ class QueensAward extends React.Component{
             <button onClick={this.fighterCry}>Cry</button>
             <h2>{this.state.fighterName}</h2>
             <div className="lifeConteneurFighter">
-              <div className="restLifeFighter" style={{width:this.state.fighterLife*(100/15)+'%'}}>
+              <div className="restLifeFighter" style={{width:this.state.fighterLife+'%'}}>
               </div>
             </div>
               <p>{this.state.fighterLife} points de vie</p>
@@ -238,7 +240,7 @@ class QueensAward extends React.Component{
           </div>
         </div>}
         {!this.state.fighterDisplay && <button>You win ! New game ?</button>}
-
+          <button onClick={this.HandleClick}>nouveau concurrent</button>
 
         
 
