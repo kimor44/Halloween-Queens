@@ -40,28 +40,33 @@ class QueensAward extends React.Component{
 
   //initialisation de notre pretendant au titre
   componentDidMount=()=>{
-    axios.get('url')
+
+
+    axios.get('http://192.168.184.61:8000/Home/monsterAll')
     .then((response)=>{
+      console.log(response.data)
         this.setState({
-          life:response.data.life,
-          attack:response.data.attack,
-          name:response.data.name,
-          pictureDescription:response.data.pictureDescription,
-          picture:response.data.picture,
-          attaque:response.data.attaque[0].nom,
-          attaque:response.data.attaque[0].value,
-          attaque:response.data.attaque[1].nom,
-          attaque:response.data.attaque[1].value,
-          attaque:response.data.attaque[2].nom,
-          attaque:response.data.attaque[2].value
+          life:100,
+          // attack:response.data.attack,
+          name:response.data[0].name,
+          picture:response.data[0].picture,
+          pictureDescription:response.data[0].picture_legend,
+          // attacks:response.data[0].attacks[0].name,
+          attaque:response.data[0].attacks[0].limitstroke,
+          attaque:response.data[0].attacks[1].name,
+          attaque:response.data[0].attacks[1].limitstroke,
+          attaque:response.data[0].attacks[2].name,
+          attaque:response.data[0].attacks[2].limitstroke
+
           
-    })
+    });
+    console.log(response.data[0].name);
     })
   }
 
   //initialisation de notre adversaire
   HandleClick=()=>{
-    axios.get('url')
+    axios.get('http://192.168.184.61:8000/Home/monsterAll')
     .then((response)=>{
         this.setState({
           fighterLife:response.data.life,
@@ -235,7 +240,7 @@ class QueensAward extends React.Component{
         {!this.state.fighterDisplay && <button>You win ! New game ?</button>}
 
 
-      
+        
 
       </div>
       

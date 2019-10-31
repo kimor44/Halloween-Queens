@@ -7,7 +7,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Les reines d'halloween
+       <h1>Halloween's Queen</h1>  
+       <h2>Who will be the most beautiful?</h2>
         <Router/>
       </header>
     </div>
