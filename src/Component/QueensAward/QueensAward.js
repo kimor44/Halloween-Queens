@@ -129,9 +129,9 @@ class QueensAward extends React.Component{
     return(Math.floor(Math.random()*Math.floor(max)))
     }
 
-  cry=()=>{
+  strokeOne=()=>{
     this.play('./assets/sounds/cri.wav')
-    let damage = this.getRandomInt(this.state.attack)
+    let damage = this.getRandomInt(40)
     console.log(damage)
     if (this.state.life>0 && this.state.fighterLife>0){
     this.setState({fighterLife:this.state.fighterLife - damage})
@@ -145,45 +145,25 @@ class QueensAward extends React.Component{
 
     }
   }
+ 
+  strokeTwo=()=>{
+    this.play('./assets/sounds/coupMachoire.wav')
+    let damage = this.getRandomInt(40)
 
-  php=()=>{
-    this.play('./assets/sounds/phpRespect.mp3')
-  }
+    if (this.state.life>0 && this.state.fighterLife>0){
+    this.setState({fighterLife:this.state.fighterLife - damage})
+    this.setState({attack:this.state.attack -1})
+    console.log(this.state.life)}
+    else{
+      console.log('dead')
+      this.setState({fighterDisplay:!this.state.fighterDisplay})
 
-  // strokeOne=()=>{
-  //   this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}.wav`)
-  //   let damage = this.getRandomInt(this.state.attack)
+      }
+    }
 
-  //   if (this.state.life>0 && this.state.fighterLife>0){
-  //   this.setState({fighterLife:this.state.fighterLife - damage})
-  //   this.setState({attack:this.state.attack -1})
-  //   console.log(this.state.life)}
-  //   else{
-  //     console.log('dead')
-  //     this.setState({fighterDisplay:!this.state.fighterDisplay})
-
-  //     }
-  //   }
-
-
-  // kick=()=>{
-  //   this.play('./assets/sounds/coupMachoire.wav')
-  //   let damage = this.getRandomInt(this.state.attack)
-
-  //   if (this.state.life>0 && this.state.fighterLife>0){
-  //   this.setState({fighterLife:this.state.fighterLife - damage})
-  //   this.setState({attack:this.state.attack -1})
-  //   console.log(this.state.life)}
-  //   else{
-  //     console.log('dead')
-  //     this.setState({fighterDisplay:!this.state.fighterDisplay})
-
-  //     }
-  //   }
-
-  blowSack=()=>{
+  strokeThree=()=>{
     this.play('./assets/sounds/bagarre.mp3')
-    let damage = this.getRandomInt(this.state.attack)
+    let damage = this.getRandomInt(40)
 
     if (this.state.life>0 && this.state.fighterLife>0){
       this.setState({fighterLife:this.state.fighterLife - damage})
@@ -194,7 +174,9 @@ class QueensAward extends React.Component{
     }
   }
     
-
+  newGameBitch=()=>{
+    this.setState({fighterDisplay:!this.fighterDisplay})
+  }
 
   //attaque fighter
   fighterPlay=(song)=>{
@@ -202,42 +184,24 @@ class QueensAward extends React.Component{
       audio.play()
     }
 
-    fighterStrokeOne=()=>{
-      
-      let damage = this.getRandomInt(10)
-  
-      console.log(this.getRandomInt(this.state.life))
-      this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}`)
-      
-      if (this.state.life>0){
-      this.setState({life:this.state.life - damage})
-      this.setState({attack:this.state.attack -1})
-      console.log(this.state.life)}
-      else{
-        console.log('dead')
-        this.setState({display:!this.state.display})
-        }
+  fighterStrokeOne=()=>{
+    let damage = this.getRandomInt(10)
+    console.log(this.getRandomInt(this.state.life))
+    this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}`)
+    if (this.state.life>0){
+    this.setState({life:this.state.life - damage})
+    this.setState({attack:this.state.attack -1})
+    console.log(this.state.life)}
+    else{
+      console.log('dead')
+      this.setState({display:!this.state.display})
       }
+    }
 
-  // fighterKick=()=>{
-  //   this.getRandomInt(this.state.life)
-  //   let damage = this.getRandomInt(this.state.attack)
-
-  //   console.log(this.getRandomInt(this.state.life))
-  //   this.play('./assets/sounds/coupMachoire.wav')
-  //   if (this.state.life>0){
-  //   this.setState({life:this.state.life - damage})
-  //   this.setState({attack:this.state.attack -1})
-  //   console.log(this.state.life)}
-  //   else{
-  //     console.log('dead')
-  //     this.setState({display:!this.state.display})
-  //     }
-  //   }
-
-  fighterBlowSack=()=>{
-    this.play('./assets/sounds/bagarre.mp3')
-    let damage = this.getRandomInt(this.state.attack)
+  fighterStrokeTwo=()=>{
+    let damage = this.getRandomInt(10)
+    console.log(this.getRandomInt(this.state.life))
+    this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeTwoSound}`)
 
     if (this.state.life>0){
     this.setState({life:this.state.life - damage})
@@ -249,9 +213,10 @@ class QueensAward extends React.Component{
     }
   }
 
-  fighterCry=()=>{
-    this.play('./assets/sounds/cri.wav')
-    let damage = this.getRandomInt(this.state.attack)
+  fighterStrokeThree=()=>{
+    let damage = this.getRandomInt(10)
+    console.log(this.getRandomInt(this.state.life))
+    this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeThreeSound}`)
 
     if (this.state.life>0){
     this.setState({life:this.state.life - damage})
@@ -269,9 +234,9 @@ class QueensAward extends React.Component{
         <div className='queenPretender' >
           <img className="imageFighter" src={this.state.picture} alt={this.state.pictureDescription}/>
             <div className='lowDiv'>
-              <button onClick={this.kick}>{this.state.attaqueNameOne}</button>
-              <button onClick={this.blowSack}>{this.state.attaqueNameTwo}</button>
-              <button onClick={this.cry}>{this.state.attaqueNameThree}</button>
+              <button onClick={this.strokeOne}>{this.state.attaqueNameOne}</button>
+              <button onClick={this.strokeTwo}>{this.state.attaqueNameTwo}</button>
+              <button onClick={this.strokeThree}>{this.state.attaqueNameThree}</button>
 
               <h2>{this.state.name}</h2>
                 <div className='lifeConteneur'>
@@ -290,8 +255,8 @@ class QueensAward extends React.Component{
           <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
           <div className='lowDivFighter'>
             <button onClick={this.fighterStrokeOne}>{this.state.fighterAttaqueNameOne}</button>
-            <button onClick={this.fighterBlowSack}>{this.state.fighterAttaqueNameTwo}</button>
-            <button onClick={this.fighterCry}>{this.state.fighterAttaqueNameThree}</button>
+            <button onClick={this.fighterStrokeTwo}>{this.state.fighterAttaqueNameTwo}</button>
+            <button onClick={this.fighterStrokeThree}>{this.state.fighterAttaqueNameThree}</button>
             <h2>{this.state.fighterName}</h2>
             <div className="lifeConteneurFighter">
               <div className="restLifeFighter" style={{width:this.state.fighterLife+'%'}}>
@@ -302,7 +267,7 @@ class QueensAward extends React.Component{
                 
           </div>
         </div>}
-        {!this.state.fighterDisplay && <button>You win ! New game ?</button>}
+        {!this.state.fighterDisplay && <button onClick={this.newGameBitch}>You win ! New game ?</button>}
           <button onClick={this.HandleClick}>nouveau concurrent</button>
 
         
