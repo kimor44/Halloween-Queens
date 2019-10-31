@@ -1,14 +1,8 @@
 .lifeConteneur{
-    width: 350px;
+    width: 360px;
     height: 25px;
     background-color:blue;
 }
-
-/* .test{
-    width: 300px;
-    height: 25px;
-    background-color:blue;
-} */
 .restLife{
     width: 30%;
     height: 100%;
@@ -27,16 +21,16 @@
   /* background-color:#775A03; */
   border: solid 12px #E8C849;
   border-radius: 30px;
-  width: 350px;
-  height: 400px;
+  width: 360px;
+  height: 500px;
 }
 .lowDivFighter{
     background: linear-gradient(#7EA5AA, #94C7CD);
     border-bottom-right-radius: 18px;
     border-bottom-left-radius: 18px;
-    height: 250px;
+    height: 300px;
     position: absolute;
-    width: 350px;
+    width: 360px;
 }
 .lowDiv{
   background : linear-gradient(#B59772, #C2B484 );
@@ -44,16 +38,16 @@
   /* background-color: #88B4B9; */
   border-bottom-right-radius: 18px;
   border-bottom-left-radius: 18px;
-  height: 250px;
+  height: 300px;
   position: absolute;
-  width: 350px;
+  width: 360px;
 
 }
 .fighter{
     background:linear-gradient(#224A4D, #2D5F67);
     border: solid 12px#4C9CAF;
-    width: 350px;
-    height: 400px;
+    width: 360px;
+    height: 500px;
     background-color:;
     border-radius: 30px;
 }
@@ -67,8 +61,8 @@ h2{
 }
 
 .imageFighter{
-    width: 150px;
-    height:150px;
+    width: 200px;
+    height:200px;
     display: block;
     margin: auto;
 }
@@ -76,13 +70,13 @@ button{
     border-radius: 8px;
     background-color: black;
     color:white;
-    width: 110px;
+    width: 115px;
     height: 40px;
     position: relative;
     top: -15px;
     font-size: 70%;
     margin-right: 5px;
-    font-size: 0.50em;
+    font-size: 0.45em;
 
 }
 
@@ -116,7 +110,30 @@ button{
   top:0px;
 }
 
-.winnerDiv h2{
+.h2winner{
   margin-top: 250px;
   font-size: 4em;
+  color: orange;
 }
+.reloadFighter{
+  background-color: red;
+  color: black;
+  width: 150px;
+  height: 100px;
+  font-size: 0.8em;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 90px;
+  font-family: 'Creepster', cursive;
+
+}
+
+.looser{
+  width: 800px;
+  height: 800px;
+  font-size: 3em;
+  color: orange;
+  font-family: 'Creepster', cursive;
+
+}
+

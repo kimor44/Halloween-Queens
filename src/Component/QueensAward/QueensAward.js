@@ -146,7 +146,6 @@ class QueensAward extends React.Component{
 
   strokeOne=()=>{
     
-    
     this.play(`./assets/sounds/${this.state.attaqueStrokeOneSound}`)
     let damage = this.getRandomInt(40)
     this.fighterStrokeOne()
@@ -250,6 +249,10 @@ class QueensAward extends React.Component{
     }
   }
 
+  looseDisplay=()=>{
+    this.setState({display:!this.state.display})
+  }
+
   render(){
     return(
       <div className="containerCarte">
@@ -272,9 +275,9 @@ class QueensAward extends React.Component{
         </div>}
         {/* <button onClick={this.php}>php</button> */}
 
-        {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
+        {!this.state.display && <button onClick={this.looseDisplay} className='looser'>You Lose Loooooooser ... New game ?</button>}
        
-        <button onClick={this.HandleClick}>nouveau concurrent</button>
+        <button className='reloadFighter' onClick={this.HandleClick}>nouveau concurrent</button>
 
         {this.state.fighterDisplay && 
         <div className="fighter" style={this.state.fighterDisplay?{display:'block'}:{display:'none'}}>
@@ -294,9 +297,9 @@ class QueensAward extends React.Component{
                 
           </div>
         </div>}
-        {!this.state.fighterDisplay && <button onClick={()=>{this.newGameBitch(); this.victoryPoint()}} >You win ! New game ?</button>}
+        {!this.state.fighterDisplay && <button className='reloadFighter' onClick={()=>{this.newGameBitch(); this.victoryPoint()}} >You win ! New game ?</button>}
 
-        {this.state.winner && <div className='winnerDiv'><h2>WINNER !!!!!!!!!!!!!!!!! bitch</h2><button onClick={this.handClickClose}>Again</button></div>}
+        {this.state.winner && <div className='winnerDiv'><h2 className='h2winner'>WINNER !!!!!!!!!!!!!!!!! bitch</h2><button onClick={this.handClickClose}>Again</button></div>}
 
       </div>
     )
