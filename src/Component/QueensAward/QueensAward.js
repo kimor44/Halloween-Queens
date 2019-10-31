@@ -130,7 +130,7 @@ class QueensAward extends React.Component{
     }
 
   strokeOne=()=>{
-    this.play('./assets/sounds/cri.wav')
+    this.play('./assets/sounds/handbackstroke.mp3')
     let damage = this.getRandomInt(40)
     console.log(damage)
     if (this.state.life>0 && this.state.fighterLife>0){
@@ -147,7 +147,7 @@ class QueensAward extends React.Component{
   }
  
   strokeTwo=()=>{
-    this.play('./assets/sounds/coupMachoire.wav')
+    this.play('./assets/sounds/chignon.mp3')
     let damage = this.getRandomInt(40)
 
     if (this.state.life>0 && this.state.fighterLife>0){
@@ -162,7 +162,7 @@ class QueensAward extends React.Component{
     }
 
   strokeThree=()=>{
-    this.play('./assets/sounds/bagarre.mp3')
+    this.play('./assets/sounds/cri.mp3')
     let damage = this.getRandomInt(40)
 
     if (this.state.life>0 && this.state.fighterLife>0){
@@ -183,6 +183,8 @@ class QueensAward extends React.Component{
     let audio = new Audio(song);
       audio.play()
     }
+
+  
 
   fighterStrokeOne=()=>{
     let damage = this.getRandomInt(10)
@@ -227,9 +229,11 @@ class QueensAward extends React.Component{
     }
   }
 
+
+
   render(){
     return(
-      <div>
+      <div className="containerCarte">
         {this.state.display &&
         <div className='queenPretender' >
           <img className="imageFighter" src={this.state.picture} alt={this.state.pictureDescription}/>
@@ -267,13 +271,11 @@ class QueensAward extends React.Component{
                 
           </div>
         </div>}
-        {!this.state.fighterDisplay && <button onClick={this.newGameBitch}>You win ! New game ?</button>}
-          <button onClick={this.HandleClick}>nouveau concurrent</button>
 
-        
-
-      </div>
+      {!this.state.fighterDisplay && <button onClick={this.newGameBitch}>You win ! New game ?</button>}
+      <button onClick={this.HandleClick}>nouveau concurrent</button>
       
+     </div>
       
     )
 }
