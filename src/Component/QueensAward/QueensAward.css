@@ -78,7 +78,7 @@ button{
     top: -15px;
     font-size: 70%;
     margin-right: 5px;
-    font-size: 0.55em;
+    font-size: 0.50em;
 
 }
 
@@ -99,4 +99,20 @@ button{
   width: 285px;
   font-size: 0.7em;
   overflow-y: hidden;
+}
+.winnerDiv{
+  width: 900px;
+  height: 900px;
+  background-color: black;
+  color: red;
+  position: fixed;
+  z-index: 999;
+  text-align: center;
+  justify-content: center;
+  top:0px;
+}
+
+.winnerDiv h2{
+  margin-top: 250px;
+  font-size: 4em;
 }

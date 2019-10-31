@@ -9,6 +9,8 @@ class QueensAward extends React.Component{
   constructor(){
     super()
     this.state={
+      victory:0,
+      winner:false,
       display:true,
       life:15,
       attack:15,
@@ -110,6 +112,20 @@ class QueensAward extends React.Component{
   }
 
   //fonctions d'attaques de notre pretendant
+
+  handClickClose=()=>{
+    this.setState({winner:!this.state.winner})
+  }
+
+  victoryPoint=()=>{
+    if (this.state.victory <3){
+    this.setState({victory: this.state.victory + 1 })
+    console.log(this.state.victory)}
+    else{
+      this.setState({winner:!this.state.winner})
+      console.log (!this.state.winner)
+    }
+  }
 
   play=(song)=>{
     let audio = new Audio(song);
@@ -263,8 +279,9 @@ class QueensAward extends React.Component{
                 
           </div>
         </div>}
-        {!this.state.fighterDisplay && <button onClick={this.newGameBitch}>You win ! New game ?</button>}
+        {!this.state.fighterDisplay && <button onClick={()=>{this.newGameBitch(); this.victoryPoint()}} >You win ! New game ?</button>}
 
+        {this.state.winner && <div className='winnerDiv'><h2>WINNER !!!!!!!!!!!!!!!!! bitch</h2><button onClick={this.handClickClose}>Again</button></div>}
         
 
       </div>
