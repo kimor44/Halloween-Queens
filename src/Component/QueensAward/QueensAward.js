@@ -13,6 +13,7 @@ class QueensAward extends React.Component{
       life:15,
       attack:15,
       name:'Robert',
+      describ:'',
       pictureDescription:'',
       picture:'https://pbs.twimg.com/profile_images/1039622074342498304/UWbxR4lt.jpg',
       attaqueNameOne:'',
@@ -39,6 +40,7 @@ class QueensAward extends React.Component{
       fighterLife:15,
       fighterAttack:15,
       fighterName:'Guy',
+      fighterDescrib:'',
       fighterPictureDescription:'',
       fighterPicture:'https://gal.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2Fvar.2Fgal.2Fstorage.2Fimages.2Fmedia.2Fmultiupload_du_22_juin_2017.2Fgeorge-clooney.2F4102307-1-fre-FR.2Fgeorge-clooney.2Ejpg/480x480/quality/80/george-clooney-vend-sa-marque-de-tequila-et-empoche-un-gros-cheque.jpg',
       fighterAttaque:[{nom:'leve de coude',
@@ -52,6 +54,10 @@ class QueensAward extends React.Component{
 
   //initialisation de notre pretendant au titre
   componentDidMount=()=>{
+    console.log('macron')
+    this.play(`./assets/sounds/macron.mp3`)
+    console.log('macron2')
+
     let character = this.getRandomInt(19)
 
     axios.get('http://192.168.184.61:8000/Home/monsterAll')
@@ -60,6 +66,7 @@ class QueensAward extends React.Component{
         this.setState({
           life:100,
           name:response.data[character].name,
+          describ:response.data[character].description,
           picture:response.data[character].picture,
           pictureDescription:response.data[character].picture_legend,
           attaqueNameOne:response.data[character].attacks[0].name,
@@ -86,6 +93,7 @@ class QueensAward extends React.Component{
           fighterLife:100,
           fighterAttack:response.data.attack,
           fighterName:response.data[character].name,
+          fighterDescrib:response.data[character].description,
           fighterPictureDescription:response.data[character].picture_legend,
           fighterPicture:response.data[character].picture,
           fighterAttaqueNameOne:response.data[character].attacks[0].name,
@@ -223,6 +231,7 @@ class QueensAward extends React.Component{
               <button onClick={this.strokeThree}>{this.state.attaqueNameThree}</button>
 
               <h2>{this.state.name}</h2>
+              <p className='descriptioncss'>{this.state.describ}</p>
                 <div className='lifeConteneur'>
                   <div className="restLife" style={{width:this.state.life+'%'}}>
                   </div>
@@ -244,6 +253,7 @@ class QueensAward extends React.Component{
             <button onClick={this.fighterStrokeTwo}>{this.state.fighterAttaqueNameTwo}</button>
             <button onClick={this.fighterStrokeThree}>{this.state.fighterAttaqueNameThree}</button>
             <h2>{this.state.fighterName}</h2>
+            <p className="descriptioncss">{this.state.fighterDescrib}</p>
             <div className='lifeConteneur'>
               <div className="restLifeFighter" style={{width:this.state.fighterLife+'%'}}>
               </div>
