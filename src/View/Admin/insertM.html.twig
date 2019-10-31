@@ -1,0 +1,45 @@
+
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <form action="" method="POST">
+
+        <div>
+            <label for="name">Name</label>
+            <select name="name" id="name">
+                {% for monster in monstersAPI %}
+                    <option value="{{ monster.name }}">{{ monster.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="level">Level</label>
+            <input type="number" value = 100 name="level">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <select name="description" id="description">
+                {% for monster in monstersAPI %}
+                    <option value="{{ monster.description }}">{{ monster.description }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="picture">Picture</label>
+            <select name="picture" id="picture">
+                {% for monster in monstersAPI %}
+                    <option value="{{ monster.picture }}">{{ monster.picture }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="picture_legend">Picture legend</label>
+            <input type="text" name="picture_legend" id="picture_legend" >
+        </div>
+
+        <div>
+            <button type="submit">envoyer</button>
+        </div>
+
+    </form>
+{% endblock %}
