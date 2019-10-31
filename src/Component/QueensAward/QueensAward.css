@@ -32,7 +32,7 @@
   height: 400px;
 }
 .lowDivFighter{
-    background-color: #88B4B9;
+    background: linear-gradient(#7EA5AA, #94C7CD);
     border-bottom-right-radius: 18px;
     border-bottom-left-radius: 18px;
     height: 250px;
@@ -51,7 +51,7 @@
 
 }
 .fighter{
-    background-color:#234C52;
+    background:linear-gradient(#224A4D, #2D5F67);
     border: solid 12px#4C9CAF;
     width: 300px;
     height: 400px;

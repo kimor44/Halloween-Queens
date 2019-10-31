@@ -15,13 +15,33 @@ class QueensAward extends React.Component{
       name:'Robert',
       pictureDescription:'',
       picture:'https://pbs.twimg.com/profile_images/1039622074342498304/UWbxR4lt.jpg',
-      attaque:[{nom:'leve de coude',
-              value:0},
-              {nom:'slip sur la tete',
-              value:0},
-              {nom:'haleine fétide',
-              value:0}],
-    
+      attaqueNameOne:'',
+      attaqueStrokeOne:'',
+      attaqueStrokeOneSound:'',
+
+      attaqueNameTwo:'',
+      attaqueStrokeTwo:'',
+      attaqueStrokeTwoSound:'',
+
+      attaqueNameThree:'',
+      attaqueStrokeThree:'',
+      attaqueStrokeThreeSound:'',
+      
+      
+      
+      fighterAttaqueNameOne:'regard',
+      fighterAttaqueStrokeOne:'',
+      fighterAttaqueStrokeOneSound:'',
+
+      fighterAttaqueNameTwo:'yeux',
+      fighterAttaqueStrokeTwo:'',
+      fighterAttaqueStrokeTwoSound:'',
+
+      fighterAttaqueNameThree:'charme',
+      fighterAttaqueStrokeThree:'',
+      fighterAttaqueStrokeThreeSound:'',
+
+      fighterSong:'',
       fighterDisplay:true,
       fighterLife:15,
       fighterAttack:15,
@@ -52,12 +72,17 @@ class QueensAward extends React.Component{
           picture:response.data[0].picture,
           pictureDescription:response.data[0].picture_legend,
           // attacks:response.data[0].attacks[0].name,
-          attaque:response.data[0].attacks[0].name,
-          attaque:response.data[0].attacks[0].limitstroke,
-          attaque:response.data[0].attacks[1].name,
-          attaque:response.data[0].attacks[1].limitstroke,
-          attaque:response.data[0].attacks[2].name,
-          attaque:response.data[0].attacks[2].limitstroke
+          attaqueNameOne:response.data[0].attacks[0].name,
+          attaqueStrokeOne:response.data[0].attacks[0].limitstroke,
+          attaqueStrokeOneSound:response.data[0].attacks[0].sound,
+
+          attaqueNameTwo:response.data[0].attacks[1].name,
+          attaqueStrokeTwo:response.data[0].attacks[1].limitstroke,
+          attaqueStrokeTwoSound:response.data[0].attacks[1].sound,
+
+          attaqueNameThree:response.data[0].attacks[2].name,
+          attaqueStrokeThree:response.data[0].attacks[2].limitstroke,
+          attaqueStrokeThreeSound:response.data[0].attacks[2].sound,
 
           
     });
@@ -67,7 +92,7 @@ class QueensAward extends React.Component{
 
   //initialisation de notre adversaire
   HandleClick=()=>{
-    let character = this.getRandomInt(2)
+    let character = this.getRandomInt(19)
     axios.get('http://192.168.184.61:8000/Home/monsterAll')
     .then((response)=>{
         this.setState({
@@ -76,12 +101,17 @@ class QueensAward extends React.Component{
           fighterName:response.data[character].name,
           fighterPictureDescription:response.data[character].picture_legend,
           fighterPicture:response.data[character].picture,
-          // fighterAttaque:response.data[character].attacks[0].name,
-          // fighterAttaque:response.data[character].attacks[0].limitstroke,
-          // fighterAttaque:response.data[character].attacks[1].name,
-          // fighterAttaque:response.data[character].attacks[1].limitstroke,
-          // fighterAttaque:response.data[character].attacks[2].name,
-          // fighterAttaque:response.data[character].attacks[2].limitstroke
+          fighterAttaqueNameOne:response.data[character].attacks[0].name,
+          fighterAttaqueStrokeOne:response.data[character].attacks[0].limitstroke,
+          fighterAttaqueStrokeOneSound: response.data[character].attacks[0].sound,
+
+          fighterAttaqueNameTwo:response.data[character].attacks[1].name,
+          fighterAttaqueStrokeTwo:response.data[character].attacks[1].limitstroke,
+          fighterAttaqueStrokeTwoSound: response.data[character].attacks[1].sound,
+
+          fighterAttaqueNameThree:response.data[character].attacks[2].name,
+          fighterAttaqueStrokeThree:response.data[character].attacks[2].limitstroke,
+          fighterAttaqueStrokeThreeSound:response.data[character].attacks[2].sound,
     })
     })
   }
@@ -120,20 +150,36 @@ class QueensAward extends React.Component{
     this.play('./assets/sounds/phpRespect.mp3')
   }
 
-  kick=()=>{
-    this.play('./assets/sounds/coupMachoire.wav')
-    let damage = this.getRandomInt(this.state.attack)
+  // strokeOne=()=>{
+  //   this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}.wav`)
+  //   let damage = this.getRandomInt(this.state.attack)
 
-    if (this.state.life>0 && this.state.fighterLife>0){
-    this.setState({fighterLife:this.state.fighterLife - damage})
-    this.setState({attack:this.state.attack -1})
-    console.log(this.state.life)}
-    else{
-      console.log('dead')
-      this.setState({fighterDisplay:!this.state.fighterDisplay})
+  //   if (this.state.life>0 && this.state.fighterLife>0){
+  //   this.setState({fighterLife:this.state.fighterLife - damage})
+  //   this.setState({attack:this.state.attack -1})
+  //   console.log(this.state.life)}
+  //   else{
+  //     console.log('dead')
+  //     this.setState({fighterDisplay:!this.state.fighterDisplay})
 
-      }
-    }
+  //     }
+  //   }
+
+
+  // kick=()=>{
+  //   this.play('./assets/sounds/coupMachoire.wav')
+  //   let damage = this.getRandomInt(this.state.attack)
+
+  //   if (this.state.life>0 && this.state.fighterLife>0){
+  //   this.setState({fighterLife:this.state.fighterLife - damage})
+  //   this.setState({attack:this.state.attack -1})
+  //   console.log(this.state.life)}
+  //   else{
+  //     console.log('dead')
+  //     this.setState({fighterDisplay:!this.state.fighterDisplay})
+
+  //     }
+  //   }
 
   blowSack=()=>{
     this.play('./assets/sounds/bagarre.mp3')
@@ -156,21 +202,38 @@ class QueensAward extends React.Component{
       audio.play()
     }
 
-  fighterKick=()=>{
-    this.getRandomInt(this.state.life)
-    let damage = this.getRandomInt(this.state.attack)
-
-    console.log(this.getRandomInt(this.state.life))
-    this.play('./assets/sounds/coupMachoire.wav')
-    if (this.state.life>0){
-    this.setState({life:this.state.life - damage})
-    this.setState({attack:this.state.attack -1})
-    console.log(this.state.life)}
-    else{
-      console.log('dead')
-      this.setState({display:!this.state.display})
+    fighterStrokeOne=()=>{
+      
+      let damage = this.getRandomInt(10)
+  
+      console.log(this.getRandomInt(this.state.life))
+      this.play(`./assets/sounds/${this.state.fighterAttaqueStrokeOneSound}`)
+      
+      if (this.state.life>0){
+      this.setState({life:this.state.life - damage})
+      this.setState({attack:this.state.attack -1})
+      console.log(this.state.life)}
+      else{
+        console.log('dead')
+        this.setState({display:!this.state.display})
+        }
       }
-    }
+
+  // fighterKick=()=>{
+  //   this.getRandomInt(this.state.life)
+  //   let damage = this.getRandomInt(this.state.attack)
+
+  //   console.log(this.getRandomInt(this.state.life))
+  //   this.play('./assets/sounds/coupMachoire.wav')
+  //   if (this.state.life>0){
+  //   this.setState({life:this.state.life - damage})
+  //   this.setState({attack:this.state.attack -1})
+  //   console.log(this.state.life)}
+  //   else{
+  //     console.log('dead')
+  //     this.setState({display:!this.state.display})
+  //     }
+  //   }
 
   fighterBlowSack=()=>{
     this.play('./assets/sounds/bagarre.mp3')
@@ -206,9 +269,9 @@ class QueensAward extends React.Component{
         <div className='queenPretender' >
           <img className="imageFighter" src={this.state.picture} alt={this.state.pictureDescription}/>
             <div className='lowDiv'>
-              <button onClick={this.kick}>kick {this.state.fighterattack}</button>
-              <button onClick={this.blowSack}>Coup de sac</button>
-              <button onClick={this.cry}>cri</button>
+              <button onClick={this.kick}>{this.state.attaqueNameOne}</button>
+              <button onClick={this.blowSack}>{this.state.attaqueNameTwo}</button>
+              <button onClick={this.cry}>{this.state.attaqueNameThree}</button>
 
               <h2>{this.state.name}</h2>
                 <div className='lifeConteneur'>
@@ -217,7 +280,7 @@ class QueensAward extends React.Component{
                 </div>
               <p>{this.state.life} points de vie</p>
             </div>
-          </div>}
+        </div>}
         {/* <button onClick={this.php}>php</button> */}
 
         {!this.state.display && <button>You Lose Loooooooser ... New game ?</button>}
@@ -226,9 +289,9 @@ class QueensAward extends React.Component{
         <div className="fighter" style={this.state.fighterDisplay?{display:'block'}:{display:'none'}}>
           <img className="imageFighter" src={this.state.fighterPicture} alt='pretty'/>
           <div className='lowDivFighter'>
-            <button onClick={this.fighterKick}>kick {this.state.fighterattack}</button>
-            <button onClick={this.fighterBlowSack}>this.fighter</button>
-            <button onClick={this.fighterCry}>Cry</button>
+            <button onClick={this.fighterStrokeOne}>{this.state.fighterAttaqueNameOne}</button>
+            <button onClick={this.fighterBlowSack}>{this.state.fighterAttaqueNameTwo}</button>
+            <button onClick={this.fighterCry}>{this.state.fighterAttaqueNameThree}</button>
             <h2>{this.state.fighterName}</h2>
             <div className="lifeConteneurFighter">
               <div className="restLifeFighter" style={{width:this.state.fighterLife+'%'}}>
